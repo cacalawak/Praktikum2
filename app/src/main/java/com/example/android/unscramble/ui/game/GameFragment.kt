@@ -131,4 +131,14 @@ class GameFragment : Fragment() {
         super.onDetach()
         Log.d("GameFragment", "GameFragment destroyed!")
     }
+
+    /*Skips the current word without changing the score.*/
+    private fun onSkipWord() {
+        if (viewModel.nextWord()) {
+            setErrorTextField(false)
+            updateNextWordOnScreen()
+        } else {
+            showFinalScoreDialog()
+        }
+    }
 }
