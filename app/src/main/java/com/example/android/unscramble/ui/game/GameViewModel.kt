@@ -15,16 +15,18 @@ class GameViewModel : ViewModel() {
     val currentWordCount: Int
         get() = _currentWordCount
 
-    private lateinit var _currentScrambledWord: String
-    val currentScrambledWord: String
-        get() = _currentScrambledWord
-
     // List of words used in the game
     private var wordsList: MutableList<String> = mutableListOf()
     private lateinit var currentWord: String
 
+    private lateinit var _currentScrambledWord: String
+    val currentScrambledWord: String
+        get() = _currentScrambledWord
+
+
     init {
         Log.d("GameFragment", "GameViewModel created!")
+        getNextWord()
     }
 
     override fun onCleared() {
