@@ -24,5 +24,8 @@ class GameViewModel : ViewModel() {
         Log.d("GameFragment", "GameViewModel destroyed!")
     }
 
+    private fun getNextWord() {
+        currentWord = allWordsList.random()
+    }
 
 }
