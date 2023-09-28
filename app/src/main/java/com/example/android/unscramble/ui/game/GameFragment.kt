@@ -90,6 +90,9 @@ class GameFragment : Fragment() {
         tempWord.shuffle()
         return String(tempWord)
     }
+    private fun showFinalScoreDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+    }
 
     /*
      * Re-initializes the data in the ViewModel and updates the views with the new data, to
