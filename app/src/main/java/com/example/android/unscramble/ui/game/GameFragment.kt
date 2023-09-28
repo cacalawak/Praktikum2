@@ -70,8 +70,13 @@ class GameFragment : Fragment() {
     * Checks the user's word, and updates the score accordingly.
     * Displays the next scrambled word.
     */
-    private fun onSubmitWord() {
-
+        private fun onSubmitWord() {
+            if (viewModel.nextWord()) {
+                updateNextWordOnScreen()
+            } else {
+                showFinalScoreDialog()
+            }
+        }
     }
 
     /*
