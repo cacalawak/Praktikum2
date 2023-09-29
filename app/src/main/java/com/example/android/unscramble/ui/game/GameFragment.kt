@@ -60,6 +60,8 @@ class GameFragment : Fragment() {
 
         binding.maxNoOfWords = MAX_NO_OF_WORDS
 
+        binding.lifecycleOwner = viewLifecycleOwner
+
     }
         // Setup a click listener for the Submit and Skip buttons.
         binding.submit.setOnClickListener { onSubmitWord() }
