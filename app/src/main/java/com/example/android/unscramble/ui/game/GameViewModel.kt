@@ -14,16 +14,17 @@ class GameViewModel : ViewModel() {
         get() = _score
 
     private val _currentScrambledWord = MutableLiveData<String>()
-    val currentWordCount: Int
+    val currentScrambledWord : LiveData<String>
+        get() = _currentScrambledWord
+    private var _currentWordCount = MutableLiveData<Int>(0)
+    val currentWordCount : LiveData<Int>
         get() = _currentWordCount
 
     // List of words used in the game
     private var wordsList: MutableList<String> = mutableListOf()
     private lateinit var currentWord: String
 
-    private lateinit var _currentScrambledWord: String
-    val currentScrambledWord: String
-        get() = _currentScrambledWord
+
 
 
     init {
@@ -50,8 +51,8 @@ class GameViewModel : ViewModel() {
         if (wordsList.contains(currentWord)) {
             getNextWord()
         } else {
-            _currentScrambledWord = String(tempWord)
-            ++_currentWordCount
+            _currentScrambledWord.value = String(tempWord)
+                _currentWordCount.value = (_currentWordCount.value)?.inc()
             wordsList.add(currentWord)
         }
     }
@@ -61,7 +62,7 @@ class GameViewModel : ViewModel() {
     */
     fun reinitializeData() {
         _score = 0
-        _currentWordCount = 0
+        _currentWordCount.value = 0
         wordsList.clear()
         getNextWord()
     }
@@ -89,7 +90,7 @@ class GameViewModel : ViewModel() {
     * Returns true if the current word count is less than MAX_NO_OF_WORDS
     */
     fun nextWord(): Boolean {
-        return if (_currentWordCount < MAX_NO_OF_WORDS) {
+        return if (_currentWordCount.value!! < MAX_NO_OF_WORDS) {
             getNextWord()
             true
         } else false
