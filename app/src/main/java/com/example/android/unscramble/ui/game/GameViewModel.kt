@@ -72,7 +72,7 @@ class GameViewModel : ViewModel() {
    * Increases the game score if the player's word is correct.
    */
     private fun increaseScore() {
-        _score += SCORE_INCREASE
+        _score.value = (_score.value)?.plus (SCORE_INCREASE)
     }
 
     /*
