@@ -74,7 +74,9 @@ class GameFragment : Fragment() {
 
         if (viewModel.isUserWordCorrect(playerWord)) {
             setErrorTextField(false)
-            if (!viewModel.nextWord()) {
+            if (viewModel.nextWord()) {
+                updateNextWordOnScreen()
+            } else {
                 showFinalScoreDialog()
             }
         } else {
@@ -160,10 +162,7 @@ class GameFragment : Fragment() {
      * Displays the next scrambled word on screen.
      */
     private fun updateNextWordOnScreen() {
-        binding.textViewUnscrambledWord.text = viewModel.currentScrambledWord.observe(viewLifecycleOwner,
-            { newWord ->
-                binding.textViewUnscrambledWord.text = newWord
-            })
+        binding.textViewUnscrambledWord.text = viewModel.currentScrambledWord
     }
 
 }
