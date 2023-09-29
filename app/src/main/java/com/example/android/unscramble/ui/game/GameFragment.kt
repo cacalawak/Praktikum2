@@ -161,9 +161,9 @@ class GameFragment : Fragment() {
      */
     private fun updateNextWordOnScreen() {
         binding.textViewUnscrambledWord.text = viewModel.currentScrambledWord.value
-        viewModel.currentScrambledWord.observe(viewLifecycleOwner,
-            { newWord ->
-                binding.textViewUnscrambledWord.text = newWord
+        viewModel.score.observe(viewLifecycleOwner,
+            { newScore ->
+                binding.score.text = getString(R.string.score, newScore)
             })
     }
 
