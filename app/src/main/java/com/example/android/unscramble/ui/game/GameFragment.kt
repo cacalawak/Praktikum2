@@ -10,7 +10,7 @@
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and 
+ * See the License for the specific language governing permissions and
  * limitations under the License.
  */
 
@@ -46,7 +46,7 @@ class GameFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View {
         // Inflate the layout XML file and return a binding object instance
-        binding = GameFragmentBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.game_fragment, container, false)
         Log.d("GameFragment", "GameFragment created/re-created!")
         Log.d("GameFragment", "Word: ${viewModel.currentScrambledWord} " +
                 "Score: ${viewModel.score} WordCount: ${viewModel.currentWordCount}")
