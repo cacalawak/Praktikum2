@@ -58,10 +58,7 @@ class GameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // Observe the currentScrambledWord LiveData.
         // Observe the scrambledCharArray LiveData, passing in the LifecycleOwner and the observer.
-            viewModel.currentScrambledWord.observe(viewLifecycleOwner,
-                { newWord ->
-                    binding.textViewUnscrambledWord.text = newWord
-                }
+        // remove the LiveData observer code for currentScrambledWord
 
         binding.gameViewModel = viewModel
 
