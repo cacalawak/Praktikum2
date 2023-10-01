@@ -43,14 +43,16 @@ class GameFragment : Fragment() {
     // first fragment
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         // Inflate the layout XML file and return a binding object instance
         binding = DataBindingUtil.inflate(inflater, R.layout.game_fragment, container, false)
         Log.d("GameFragment", "GameFragment created/re-created!")
-        Log.d("GameFragment", "Word: ${viewModel.currentScrambledWord} " +
-                "Score: ${viewModel.score} WordCount: ${viewModel.currentWordCount}")
+        Log.d(
+            "GameFragment", "Word: ${viewModel.currentScrambledWord} " +
+                    "Score: ${viewModel.score} WordCount: ${viewModel.currentWordCount}"
+        )
         return binding.root
     }
 
@@ -65,11 +67,9 @@ class GameFragment : Fragment() {
         binding.maxNoOfWords = MAX_NO_OF_WORDS
 
         binding.lifecycleOwner = viewLifecycleOwner
-                        viewModel.currentWordCount.observe(viewLifecycleOwner,
-                            { newWordCount ->
-                                binding.wordCount.text =
-                                    getString(R.string.word_count, newWordCount, MAX_NO_OF_WORDS)
-                            })
+        viewModel.currentWordCount.observe(viewLifecycleOwner, { newWordCount -> binding.wordCount.text =
+                getString(R.string.word_count, newWordCount, MAX_NO_OF_WORDS)
+            })
 
 
         // Setup a click listener for the Submit and Skip buttons.
@@ -174,10 +174,7 @@ class GameFragment : Fragment() {
     /*
      * Displays the next scrambled word on screen.
      */
-//    private fun updateNextWordOnScreen() {
-//        binding.textViewUnscrambledWord.text = viewModel.currentScrambledWord.value
-//        viewModel.currentScrambledWord.observe(viewLifecycleOwner,
-//            { newWord ->
-//                binding.textViewUnscrambledWord.text = newWord
-//            })
-//    }
+    private fun updateNextWordOnScreen() {
+        binding.textViewUnscrambledWord.text = viewModel.currentScrambledWord.value
+    }
+}
